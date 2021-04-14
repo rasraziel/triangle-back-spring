@@ -1,7 +1,5 @@
 package com.elias.app.model;
 
-import java.util.function.Predicate;
-
 public class Triangle {
 
     public enum Type {

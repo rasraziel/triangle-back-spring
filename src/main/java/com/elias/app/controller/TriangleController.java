@@ -1,10 +1,8 @@
 package com.elias.app.controller;
-
 import com.elias.app.model.Point;
 import com.elias.app.model.Triangle;
 import com.elias.app.model.TriangleRequestPoints;
 import com.elias.app.model.TriangleRequestSides;
-import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +16,7 @@ public class TriangleController {
     public ResponseEntity<Triangle.Type> createByPoints(@RequestBody TriangleRequestPoints req) {
 
         if (isInvalidRequestPoints(req))
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(Triangle.Type.NONE, HttpStatus.BAD_REQUEST);
         Triangle triangle = mapTrianglePointsRequestToTriangle(req);
         return new ResponseEntity<>(triangle.typeOfTriangle(), HttpStatus.OK);
     }
@@ -27,7 +25,7 @@ public class TriangleController {
     public ResponseEntity<Triangle.Type> createBySides(@RequestBody TriangleRequestSides req) {
 
         if (isInvalidRequestSides(req))
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(Triangle.Type.NONE, HttpStatus.BAD_REQUEST);
         Triangle triangle = mapTriangleSidesRequestToTriangle(req);
         return new ResponseEntity<>(triangle.typeOfTriangle(), HttpStatus.OK);
     }
