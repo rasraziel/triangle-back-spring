@@ -9,6 +9,7 @@ public class Triangle {
     private final double BC_LENGTH;
     private final double CA_LENGTH;
 
+    //Constructor for Point based objects
     public Triangle(Point A, Point B, Point C, double AB_LENGTH, double BC_LENGTH, double CA_LENGTH) {
         this.A = A;
         this.B = B;
@@ -18,6 +19,7 @@ public class Triangle {
         this.CA_LENGTH = CA_LENGTH;
     }
 
+    //Constructor for side based objects
     public Triangle(double AB_LENGTH, double BC_LENGTH, double CA_LENGTH) {
         this.AB_LENGTH = AB_LENGTH;
         this.BC_LENGTH = BC_LENGTH;
@@ -58,6 +60,8 @@ public class Triangle {
         return Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
     }
 
+    //Triangle type calculations. For the point based calculations the Equilateral triangle
+    // is dropped as we cannot create an equilateral triangle with integer x, y points
     public static TriangleType typeOfTriangle(Triangle triangle) {
         double ab = triangle.AB_LENGTH;
         double bc = triangle.BC_LENGTH;
@@ -79,6 +83,7 @@ public class Triangle {
                             : TriangleType.ISOSCELES;
     }
 
+    //Triangle type enum class
     public enum TriangleType {
         SCALENE,
         ISOSCELES,
