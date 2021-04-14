@@ -1,22 +1,33 @@
 package com.elias.app.model;
 
+import java.util.function.Predicate;
+
 public class Triangle {
+
+    public enum Type {
+        SCALENE,
+        ISOSCELES,
+        EQUILATERAL,
+        NONE
+    }
 
     private final Point A;
     private final Point B;
     private final Point C;
-    private final double AB_LENGTH;
-    private final double BC_LENGTH;
-    private final double CA_LENGTH;
+    private double AB_LENGTH;
+    private double BC_LENGTH;
+    private double CA_LENGTH;
+
+
 
     //Constructor for Point based objects
-    public Triangle(Point A, Point B, Point C, double AB_LENGTH, double BC_LENGTH, double CA_LENGTH) {
+    public Triangle(Point A, Point B, Point C) {
         this.A = A;
         this.B = B;
         this.C = C;
-        this.AB_LENGTH = AB_LENGTH;
-        this.BC_LENGTH = BC_LENGTH;
-        this.CA_LENGTH = CA_LENGTH;
+        AB_LENGTH = Triangle.sideLength(A, B);
+        BC_LENGTH = Triangle.sideLength(B, C);
+        CA_LENGTH = Triangle.sideLength(C, A);
     }
 
     //Constructor for side based objects
@@ -53,43 +64,32 @@ public class Triangle {
         return CA_LENGTH;
     }
 
-    //Method calculating side length based on x,y coordinates
+
+    //Method calculating side length based on x,y coordinates using the Pythagorean theorem
     public static double sideLength(Point one, Point two) {
-        int xDiff = Math.abs(one.getX() - two.getX());
-        int yDiff = Math.abs(one.getY() - two.getY());
+        double xDiff = Math.abs(one.getX() - two.getX());
+        double yDiff = Math.abs(one.getY() - two.getY());
         return Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
     }
 
-    //Triangle type calculations. For the point based calculations the Equilateral triangle
-    // is dropped as we cannot create an equilateral triangle with integer x, y points
-    public static TriangleType typeOfTriangle(Triangle triangle) {
-        double ab = triangle.AB_LENGTH;
-        double bc = triangle.BC_LENGTH;
-        double ca = triangle.CA_LENGTH;
-       return triangle.A!=null
-                 ? triangle.A.getX() == triangle.B.getX() && triangle.B.getX() == triangle.C.getX() ||
-                   triangle.A.getY() == triangle.B.getY() && triangle.B.getY() == triangle.C.getY() ||
-                   ab==0 || bc == 0 || ca==0 || ab+bc<=ca || bc+ca<=ab || ca+ab<=bc
-                    ? TriangleType.NONE
-                    : (ab != bc && ab != ca && bc != ca)
-                        ? TriangleType.SCALENE
-                        : TriangleType.ISOSCELES
-                 : ab==0 || bc == 0 || ca==0 || ab+bc<=ca || bc+ca<=ab || ca+ab<=bc
-                    ? TriangleType.NONE
-                    : (ab != bc && ab != ca && bc != ca)
-                        ? TriangleType.SCALENE
-                        : ab == bc && bc == ca
-                            ? TriangleType.EQUILATERAL
-                            : TriangleType.ISOSCELES;
+
+    public Type typeOfTriangle() {
+        if(isEquilateral()) return Type.EQUILATERAL;
+        if(isIsosceles()) return Type.ISOSCELES;
+        if(isScalene()) return Type.SCALENE;
+        return Type.NONE;
     }
 
-    //Triangle type enum class
-    public enum TriangleType {
-        SCALENE,
-        ISOSCELES,
-        EQUILATERAL,
-        NONE
+    private boolean isIsosceles(){
+        return AB_LENGTH==BC_LENGTH || BC_LENGTH==CA_LENGTH || CA_LENGTH == AB_LENGTH;
     }
 
+    private boolean isEquilateral(){
+        return AB_LENGTH==BC_LENGTH && BC_LENGTH == CA_LENGTH;
+    }
+
+    private boolean isScalene(){
+        return AB_LENGTH!=BC_LENGTH && BC_LENGTH!=CA_LENGTH && CA_LENGTH!=AB_LENGTH;
+    }
 
 }
