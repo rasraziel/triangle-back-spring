@@ -13,9 +13,6 @@
     <version>1.0.1.RELEASE</version>
     <name>app</name>
     <description>Triangle app backend</description>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
