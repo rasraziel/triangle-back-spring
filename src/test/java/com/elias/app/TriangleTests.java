@@ -85,7 +85,10 @@ public class TriangleTests {
 
     @Test
     public void checkIfEquilateral() {
-        Triangle t = new Triangle(5,5,5);
+        a = new Point(0,0);
+        b = new Point(2,3.46);
+        c = new Point(4,0);
+        Triangle t = new Triangle(a,b,c);
         assertEquals(Triangle.Type.EQUILATERAL, t.typeOfTriangle());
     }
 

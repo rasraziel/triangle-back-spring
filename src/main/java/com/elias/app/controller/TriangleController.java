@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class TriangleController {
 
-    @GetMapping("/points")
+    @PostMapping("/points")
     public ResponseEntity<Triangle.Type> createByPoints(@RequestBody TriangleRequestPoints req) {
 
         if (isInvalidRequestPoints(req))
@@ -21,7 +21,7 @@ public class TriangleController {
         return new ResponseEntity<>(triangle.typeOfTriangle(), HttpStatus.OK);
     }
 
-    @GetMapping("/sides")
+    @PostMapping("/sides")
     public ResponseEntity<Triangle.Type> createBySides(@RequestBody TriangleRequestSides req) {
 
         if (isInvalidRequestSides(req))
@@ -41,7 +41,7 @@ public class TriangleController {
         double bY = req.getB().getY();
         double cX = req.getC().getX();
         double cY = req.getC().getY();
-        return a.equals(b) || a.equals(c) || c.equals(b) || aX == bX || bX == cX || cX == aX|| aY == bY || bY == cY || cY == aY;
+        return a.equals(b) || a.equals(c) || c.equals(b) || aX == bX && bX == cX && cX == aX|| aY == bY && bY == cY && cY == aY;
     }
 
     // Checking if sides are 0 length or if the sum of 2 sides is less or equal to the 3rd. An impossible triangle.

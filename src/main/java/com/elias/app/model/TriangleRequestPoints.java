@@ -35,4 +35,5 @@ public class TriangleRequestPoints {
     public void setC(Point c) {
         this.c = c;
     }
+
 }

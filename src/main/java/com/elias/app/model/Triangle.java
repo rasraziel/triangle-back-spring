@@ -1,5 +1,7 @@
 package com.elias.app.model;
 
+import java.awt.geom.Point2D;
+
 public class Triangle {
 
     public enum Type {
@@ -65,9 +67,11 @@ public class Triangle {
 
     //Method calculating side length based on x,y coordinates using the Pythagorean theorem
     public static double sideLength(Point one, Point two) {
-        double xDiff = Math.abs(one.getX() - two.getX());
-        double yDiff = Math.abs(one.getY() - two.getY());
-        return Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
+
+      double xDiff = Math.abs(one.getX() - two.getX());
+      double yDiff = Math.abs(one.getY() - two.getY());
+      double hypotenuse = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
+      return Math.round(hypotenuse * 100.0)/100.0;
     }
 
 
