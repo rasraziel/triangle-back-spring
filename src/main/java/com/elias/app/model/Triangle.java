@@ -1,7 +1,5 @@
 package com.elias.app.model;
 
-import java.awt.geom.Point2D;
-
 public class Triangle {
 
     public enum Type {
@@ -17,8 +15,6 @@ public class Triangle {
     private double AB_LENGTH;
     private double BC_LENGTH;
     private double CA_LENGTH;
-
-
 
     //Constructor for Point based objects
     public Triangle(Point A, Point B, Point C) {
