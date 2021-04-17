@@ -30,7 +30,7 @@ public class TriangleController {
         return new ResponseEntity<>(triangle.typeOfTriangle(), HttpStatus.OK);
     }
 
-    // Checking if 2 points are the same or if all points have the same X or Y coordinate. An impossible triangle.
+    // Checking if 2 points are the same or if all points are collinear. An impossible triangle.
     public boolean isInvalidRequestPoints(TriangleRequestPoints req) {
         Point a = req.getA();
         Point b = req.getB();
@@ -41,7 +41,8 @@ public class TriangleController {
         double bY = req.getB().getY();
         double cX = req.getC().getX();
         double cY = req.getC().getY();
-        return a.equals(b) || a.equals(c) || c.equals(b) || aX == bX && bX == cX && cX == aX|| aY == bY && bY == cY && cY == aY || (bY-aY)/(bX-aX)==(cY-bY)/(cX-bX);
+
+        return a.equals(b) || a.equals(c) || c.equals(b) || aX == bX && bX == cX || aY == bY && bY == cY || (bY-aY)/(bX-aX)==(cY-bY)/(cX-bX);
     }
 
     // Checking if sides are 0 length or if the sum of 2 sides is less or equal to the 3rd. An impossible triangle.

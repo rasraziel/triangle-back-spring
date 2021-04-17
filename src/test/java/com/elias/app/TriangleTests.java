@@ -55,6 +55,16 @@ public class TriangleTests {
     }
 
     @Test
+    public void checkIfNoTriangle4() {
+        a = new Point(0,0);
+        b = new Point(150,150);
+        c = new Point(300,300);
+        TriangleRequestPoints req = new TriangleRequestPoints(a,b,c);
+        TriangleController con = new TriangleController();
+        assertTrue(con.isInvalidRequestPoints(req));
+    }
+
+    @Test
     public void checkIfNoTriangleSides1() {
         double ab = 0;
         double bc = 1;
