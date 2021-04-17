@@ -11,8 +11,10 @@ Also deployed on AWS:
 Open [http://34.235.126.149:8080](http://34.235.126.149:8080) to view it in the browser.
 
 You can send POST requests using Postman to these endpoints and see the responses:
+
 Sides of triangle:
 http://34.235.126.149:8080/sides
+
 Example JSON:
 {
     "ab":"1",
@@ -22,6 +24,7 @@ Example JSON:
 
 X,Y coordinates of triangle vertices:
 http://34.235.126.149:8080/points
+
 Example JSON:
 {
     "a":{"x":"0", "y":"0"},
