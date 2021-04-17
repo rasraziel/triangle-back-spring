@@ -41,7 +41,7 @@ public class TriangleController {
         double bY = req.getB().getY();
         double cX = req.getC().getX();
         double cY = req.getC().getY();
-        return a.equals(b) || a.equals(c) || c.equals(b) || aX == bX && bX == cX && cX == aX|| aY == bY && bY == cY && cY == aY;
+        return a.equals(b) || a.equals(c) || c.equals(b) || aX == bX && bX == cX && cX == aX|| aY == bY && bY == cY && cY == aY || (bY-aY)/(bX-aX)==(cY-bY)/(cX-bX);
     }
 
     // Checking if sides are 0 length or if the sum of 2 sides is less or equal to the 3rd. An impossible triangle.
