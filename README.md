@@ -33,5 +33,5 @@ Example JSON:
 }
 
 Or you can use the UI of the deployed frontend React app:
-Open [http://34.203.29.198:3000](http://34.203.29.198:3000) to view it in the browser.
+Open [https://triangle-front-react.herokuapp.com/](https://triangle-front-react.herokuapp.com/) to view it in the browser.
 
