@@ -7,13 +7,13 @@ In the project directory, you will need to run:
 Runs the app at:
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
-Also deployed on AWS:
-Open [http://34.235.126.149:8080](http://34.235.126.149:8080) to view it in the browser.
+Also deployed on Heroku:
+Open [https://triangle-back.herokuapp.com/](https://triangle-back.herokuapp.com/) to view it in the browser.
 
 You can send POST requests using Postman to these endpoints and see the responses:
 
 Sides of triangle:
-http://34.235.126.149:8080/sides
+https://triangle-back.herokuapp.com/sides
 
 Example JSON:
 {
@@ -23,7 +23,7 @@ Example JSON:
 }
 
 X,Y coordinates of triangle vertices:
-http://34.235.126.149:8080/points
+https://triangle-back.herokuapp.com/points
 
 Example JSON:
 {
