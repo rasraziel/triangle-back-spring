@@ -1,7 +1,4 @@
-FROM maven:latest AS MAVEN_BUILD
-COPY ./ ./
-RUN mvn clean package
-
-FROM openjdk:latest
-COPY --from=MAVEN_BUILD ./target/app-1.0.1.RELEASE.jar app-1.0.1.RELEASE.jar
-CMD ["java","-jar","app-1.0.1.RELEASE.jar"]
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
