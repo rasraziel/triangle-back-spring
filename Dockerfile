@@ -3,5 +3,5 @@ COPY ./ ./
 RUN mvn clean package
 
 FROM openjdk:latest
-COPY --from=MAVEN_BUILD ./target/vrnova-courses-backend-1.0.jar vrnova-courses-backend-1.0.jar
-CMD ["java","-jar","vrnova-courses-backend-1.0.jar"]
+COPY --from=MAVEN_BUILD ./target/app-1.0.1.RELEASE.jar app-1.0.1.RELEASE.jar
+CMD ["java","-jar","app-1.0.1.RELEASE.jar"]
